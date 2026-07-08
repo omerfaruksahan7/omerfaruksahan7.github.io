@@ -1,166 +1,272 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ömer Faruk Şahan | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0f172a',
+                        card: '#1e293b',
+                        primary: '#3b82f6',
+                        accent: '#0ea5e9'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .bg-gradient { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #e2e8f0; }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #1e3a8a, #0f172a 50%);
+        }
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .project-card:hover {
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+        }
+        .skill-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 20px -5px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        /* Özel Karanlık Tema Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="antialiased selection:bg-primary selection:text-white">
 
     <!-- Navbar -->
-    <nav class="bg-white shadow-md fixed w-full z-10 top-0">
+    <nav class="glass-nav fixed w-full z-50 top-0 transition-all">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 font-bold text-xl text-blue-700">Ömer Faruk Şahan</div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#hakkimda" class="text-gray-600 hover:text-blue-600 font-medium">Hakkımda</a>
-                    <a href="#yetenekler" class="text-gray-600 hover:text-blue-600 font-medium">Yetenekler</a>
-                    <a href="#projeler" class="text-gray-600 hover:text-blue-600 font-medium">Projeler</a>
-                    <a href="#egitim" class="text-gray-600 hover:text-blue-600 font-medium">Eğitim & Sertifikalar</a>
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 font-bold text-2xl tracking-tight text-white">
+                    Ömer Faruk <span class="text-primary">Şahan</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hakkimda" class="text-gray-300 hover:text-white transition-colors font-medium">Hakkımda</a>
+                    <a href="#yetenekler" class="text-gray-300 hover:text-white transition-colors font-medium">Yetenekler</a>
+                    <a href="#projeler" class="text-gray-300 hover:text-white transition-colors font-medium">Projeler</a>
+                    <a href="#egitim" class="text-gray-300 hover:text-white transition-colors font-medium">Eğitim</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient text-white mt-16 py-20">
-        <div class="max-w-6xl mx-auto px-4 text-center sm:text-left sm:flex sm:items-center sm:justify-between">
-            <div class="sm:w-2/3">
-                <h1 class="text-4xl sm:text-5xl font-bold mb-4">Merhaba, Ben Ömer Faruk! 👋</h1>
-                <p class="text-xl font-light mb-6">Zonguldak Bülent Ecevit Üniversitesi Bilgisayar Mühendisliği Öğrencisi & Yazılım Geliştirici</p>
-                <div class="flex justify-center sm:justify-start space-x-4">
-                    <a href="mailto:omerf.sahan7@gmail.com" class="bg-white text-blue-700 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg"><i class="fa-solid fa-envelope mr-2"></i>İletişime Geç</a>
-                    <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" class="border border-white px-6 py-2 rounded-full font-semibold hover:bg-white hover:text-blue-700 transition"><i class="fa-brands fa-github mr-2"></i>GitHub</a>
+    <!-- Hero Bölümü -->
+    <section class="hero-gradient min-h-screen flex items-center pt-20">
+        <div class="max-w-6xl mx-auto px-4 w-full flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-3/5 text-center md:text-left z-10 relative">
+                <div class="inline-block px-4 py-1.5 rounded-full border border-gray-700 bg-gray-800/50 text-accent text-sm font-semibold mb-6">
+                    Bilgisayar Mühendisi & Yazılım Geliştirici
                 </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
+                    Merhaba, Ben <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Ömer Faruk!</span>
+                </h1>
+                <p class="text-xl text-gray-400 mb-10 max-w-2xl font-light leading-relaxed">
+                    Yapay Zeka (AI), RAG mimarileri ve modern backend sistemleri üzerine odaklanarak yenilikçi ve ölçeklenebilir çözümler geliştiriyorum.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-5">
+                    <a href="mailto:omerf.sahan7@gmail.com" class="bg-primary hover:bg-blue-600 text-white px-8 py-3.5 rounded-lg font-semibold transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] flex items-center justify-center">
+                        <i class="fa-solid fa-envelope mr-3"></i>İletişime Geç
+                    </a>
+                    <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" class="border border-gray-600 bg-card hover:border-gray-400 hover:bg-gray-800 text-white px-8 py-3.5 rounded-lg font-semibold transition-all flex items-center justify-center">
+                        <i class="fa-brands fa-github text-xl mr-3"></i>GitHub
+                    </a>
+                </div>
+            </div>
+            <!-- Dekoratif İkon -->
+            <div class="md:w-2/5 mt-16 md:mt-0 opacity-20 pointer-events-none hidden md:flex justify-end">
+                <i class="fa-solid fa-terminal text-[15rem] text-primary rotate-12 drop-shadow-2xl"></i>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="hakkimda" class="py-16 bg-white">
+    <!-- Hakkımda Bölümü -->
+    <section id="hakkimda" class="py-24 bg-dark">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 inline-block pb-2">Hakkımda</h2>
-            <p class="text-lg text-gray-600 leading-relaxed max-w-4xl">
-                Yazılım geliştirmeye büyük ilgi duyan, çeşitli projelerle kendini sürekli yenileyen bir Bilgisayar Mühendisi adayıyım. Özellikle <strong>Yapay Zeka (AI), RAG mimarileri, Büyük Dil Modelleri (LLMs)</strong> ve backend geliştirme süreçleri üzerine yoğunlaşıyorum. Gerçek dünya problemlerine yenilikçi, güvenli ve ölçeklenebilir çözümler üretmeyi hedefliyorum. Yeni teknolojiler öğrenmeye, takım içinde çalışmaya ve sorumluluk almaya her zaman hazırım.
+            <div class="flex items-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Hakkımda</h2>
+                <div class="h-px bg-gray-800 flex-grow ml-6"></div>
+            </div>
+            <p class="text-lg text-gray-400 leading-relaxed max-w-4xl font-light">
+                Zonguldak Bülent Ecevit Üniversitesi Bilgisayar Mühendisliği öğrencisiyim. Yazılım geliştirmeye büyük ilgi duyan, çeşitli projelerle kendini sürekli yenileyen bir mühendis adayıyım. Özellikle <span class="text-gray-200 font-medium">Yapay Zeka (AI), RAG mimarileri, Büyük Dil Modelleri (LLMs)</span> ve backend geliştirme süreçleri üzerine yoğunlaşıyorum. Gerçek dünya problemlerine yenilikçi, güvenli ve ölçeklenebilir çözümler üretmeyi hedefliyor, takım içinde çalışmaya ve sorumluluk almaya büyük önem veriyorum.
             </p>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="yetenekler" class="py-16 bg-gray-50">
+    <!-- Yetenekler Bölümü -->
+    <section id="yetenekler" class="py-24 bg-[#0b1120]">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 border-b-2 border-blue-500 inline-block pb-2">Teknolojiler & Yetenekler</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div class="bg-white p-4 rounded shadow hover:shadow-md transition"><i class="fa-solid fa-code text-blue-600 text-3xl mb-2"></i><p class="font-semibold">C / C++ / C#</p></div>
-                <div class="bg-white p-4 rounded shadow hover:shadow-md transition"><i class="fa-brands fa-python text-yellow-500 text-3xl mb-2"></i><p class="font-semibold">Python</p></div>
-                <div class="bg-white p-4 rounded shadow hover:shadow-md transition"><i class="fa-brands fa-windows text-purple-600 text-3xl mb-2"></i><p class="font-semibold">.NET Core & ASP.NET</p></div>
-                <div class="bg-white p-4 rounded shadow hover:shadow-md transition"><i class="fa-solid fa-database text-gray-600 text-3xl mb-2"></i><p class="font-semibold">SQL & Veritabanı</p></div>
-                <div class="bg-white p-4 rounded shadow hover:shadow-md transition"><i class="fa-brands fa-html5 text-orange-500 text-3xl mb-2"></i><p class="font-semibold">HTML & CSS</p></div>
-                <div class="bg-white p-4 rounded shadow hover:shadow-md transition"><i class="fa-solid fa-brain text-pink-500 text-3xl mb-2"></i><p class="font-semibold">Yapay Zeka & LLMs</p></div>
-                <div class="bg-white p-4 rounded shadow hover:shadow-md transition"><i class="fa-brands fa-docker text-blue-400 text-3xl mb-2"></i><p class="font-semibold">Docker & MLOps</p></div>
-                <div class="bg-white p-4 rounded shadow hover:shadow-md transition"><i class="fa-solid fa-shield-halved text-green-600 text-3xl mb-2"></i><p class="font-semibold">Siber Güvenlik / CTF</p></div>
+            <div class="flex items-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Teknolojiler & Yetenekler</h2>
+                <div class="h-px bg-gray-800 flex-grow ml-6"></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projeler" class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 border-b-2 border-blue-500 inline-block pb-2">Öne Çıkan Projeler</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-gray-50 border border-gray-100 rounded-lg p-6 shadow hover:shadow-lg transition">
-                    <h3 class="text-xl font-bold text-blue-700 mb-2">DevBlog & AI Chatbot Integrasyonu</h3>
-                    <p class="text-gray-600 mb-4">ASP.NET Core ve C# kullanarak geliştirdiğim, makalelerle etkileşim kurmayı sağlayan custom Gemini 2.5 Flash API entegrasyonuna sahip kişisel blog platformu.</p>
-                    <div class="flex space-x-2">
-                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">C#</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">ASP.NET</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Gemini 2.5 Flash API</span>
-                    </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="skill-card bg-card border border-gray-700 p-8 rounded-xl transition-all duration-300">
+                    <i class="fa-solid fa-code text-primary text-4xl mb-4"></i>
+                    <p class="font-semibold text-gray-200">C / C++ / C#</p>
                 </div>
-                <!-- Project 2 -->
-                <div class="bg-gray-50 border border-gray-100 rounded-lg p-6 shadow hover:shadow-lg transition">
-                    <h3 class="text-xl font-bold text-blue-700 mb-2">Smart Agriculture (AgriTech)</h3>
-                    <p class="text-gray-600 mb-4">TÜBİTAK 2209-A/B destekli; IoT sensör verileri ve yapay zeka kullanarak bitki hastalık tespiti ve rekolte tahmini yapan akıllı tarım sistemi mezuniyet projesi.</p>
-                    <div class="flex space-x-2">
-                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">IoT</span>
-                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Yapay Zeka</span>
-                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">TÜBİTAK</span>
-                    </div>
+                <div class="skill-card bg-card border border-gray-700 p-8 rounded-xl transition-all duration-300">
+                    <i class="fa-brands fa-python text-yellow-500 text-4xl mb-4"></i>
+                    <p class="font-semibold text-gray-200">Python</p>
                 </div>
-                <!-- Project 3 -->
-                <div class="bg-gray-50 border border-gray-100 rounded-lg p-6 shadow hover:shadow-lg transition">
-                    <h3 class="text-xl font-bold text-blue-700 mb-2">Siber Güvenlik Dedektiflik Oyunu</h3>
-                    <p class="text-gray-600 mb-4">Hikaye anlatımı ile siber güvenlik bulmacalarını birleştiren, Docker sanal makineleri üzerinden CTF mekaniklerini kullanan 4 kişilik web tabanlı oyun.</p>
-                    <div class="flex space-x-2">
-                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Siber Güvenlik</span>
-                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">CTF</span>
-                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Docker</span>
-                    </div>
+                <div class="skill-card bg-card border border-gray-700 p-8 rounded-xl transition-all duration-300">
+                    <i class="fa-brands fa-windows text-purple-500 text-4xl mb-4"></i>
+                    <p class="font-semibold text-gray-200">.NET Core</p>
                 </div>
-                <!-- Project 4 -->
-                <div class="bg-gray-50 border border-gray-100 rounded-lg p-6 shadow hover:shadow-lg transition">
-                    <h3 class="text-xl font-bold text-blue-700 mb-2">Kestirimci Bakım Modeli (TPAO)</h3>
-                    <p class="text-gray-600 mb-4">Enerji sektöründe kullanılmak üzere, yapay sinir ağları mimarisiyle makine arızalarını önceden tespit etmeyi hedefleyen makine öğrenmesi projesi.</p>
-                    <div class="flex space-x-2">
-                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Machine Learning</span>
-                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Neural Networks</span>
-                    </div>
+                <div class="skill-card bg-card border border-gray-700 p-8 rounded-xl transition-all duration-300">
+                    <i class="fa-solid fa-database text-accent text-4xl mb-4"></i>
+                    <p class="font-semibold text-gray-200">SQL</p>
+                </div>
+                <div class="skill-card bg-card border border-gray-700 p-8 rounded-xl transition-all duration-300">
+                    <i class="fa-solid fa-brain text-pink-500 text-4xl mb-4"></i>
+                    <p class="font-semibold text-gray-200">Yapay Zeka & LLMs</p>
+                </div>
+                <div class="skill-card bg-card border border-gray-700 p-8 rounded-xl transition-all duration-300">
+                    <i class="fa-brands fa-docker text-blue-400 text-4xl mb-4"></i>
+                    <p class="font-semibold text-gray-200">Docker</p>
+                </div>
+                <div class="skill-card bg-card border border-gray-700 p-8 rounded-xl transition-all duration-300">
+                    <i class="fa-solid fa-shield-halved text-green-500 text-4xl mb-4"></i>
+                    <p class="font-semibold text-gray-200">Siber Güvenlik / CTF</p>
+                </div>
+                <div class="skill-card bg-card border border-gray-700 p-8 rounded-xl transition-all duration-300">
+                    <i class="fa-brands fa-html5 text-orange-500 text-4xl mb-4"></i>
+                    <p class="font-semibold text-gray-200">HTML & CSS</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Education and Certifications -->
-    <section id="egitim" class="py-16 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8">
-            <div>
-                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 inline-block pb-2">Eğitim Geçmişi</h2>
-                <div class="relative border-l-2 border-blue-500 pl-6 ml-3 space-y-6">
-                    <div>
-                        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-1"></div>
-                        <h4 class="text-xl font-bold text-gray-800">Bilgisayar Mühendisliği</h4>
-                        <p class="text-blue-600 font-medium">Zonguldak Bülent Ecevit Üniversitesi (2023 - Devam Ediyor)</p>
-                        <p class="text-gray-500 text-sm mt-1">Not Ortalaması: 3.19</p>
+    <!-- Projeler Bölümü -->
+    <section id="projeler" class="py-24 bg-dark">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Öne Çıkan Projeler</h2>
+                <div class="h-px bg-gray-800 flex-grow ml-6"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Proje 1 -->
+                <div class="project-card bg-card border border-gray-700 rounded-2xl p-8 transition-all duration-300 flex flex-col h-full">
+                    <div class="bg-gray-800 w-12 h-12 rounded-lg flex items-center justify-center mb-6 border border-gray-700">
+                        <i class="fa-solid fa-robot text-primary text-xl"></i>
                     </div>
-                    <div>
-                        <div class="absolute w-4 h-4 bg-gray-300 rounded-full -left-[9px] top-1"></div>
-                        <h4 class="text-xl font-bold text-gray-800">Fizik</h4>
-                        <p class="text-gray-600 font-medium">Süleyman Demirel Üniversitesi (2021 - 2023)</p>
-                        <p class="text-gray-500 text-sm mt-1">Not Ortalaması: 3.23</p>
+                    <h3 class="text-xl font-bold text-white mb-3">DevBlog & AI Chatbot</h3>
+                    <p class="text-gray-400 mb-6 flex-grow text-sm leading-relaxed">ASP.NET Core ve C# kullanarak geliştirdiğim, makalelerle etkileşim kurmayı sağlayan custom Gemini 2.5 Flash API entegrasyonuna sahip kişisel blog platformu.</p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="bg-blue-900/40 text-blue-300 border border-blue-800 text-xs px-3 py-1 rounded-full font-medium">C#</span>
+                        <span class="bg-blue-900/40 text-blue-300 border border-blue-800 text-xs px-3 py-1 rounded-full font-medium">ASP.NET Core</span>
+                        <span class="bg-blue-900/40 text-blue-300 border border-blue-800 text-xs px-3 py-1 rounded-full font-medium">Gemini API</span>
+                    </div>
+                </div>
+                
+                <!-- Proje 2 -->
+                <div class="project-card bg-card border border-gray-700 rounded-2xl p-8 transition-all duration-300 flex flex-col h-full">
+                    <div class="bg-gray-800 w-12 h-12 rounded-lg flex items-center justify-center mb-6 border border-gray-700">
+                        <i class="fa-solid fa-leaf text-green-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Smart Agriculture (AgriTech)</h3>
+                    <p class="text-gray-400 mb-6 flex-grow text-sm leading-relaxed">IoT sensör verileri ve yapay zeka kullanarak bitki hastalık tespiti ile rekolte tahmini yapan akıllı tarım sistemi mezuniyet projesi.</p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="bg-green-900/40 text-green-300 border border-green-800 text-xs px-3 py-1 rounded-full font-medium">IoT</span>
+                        <span class="bg-green-900/40 text-green-300 border border-green-800 text-xs px-3 py-1 rounded-full font-medium">Yapay Zeka</span>
+                        <span class="bg-green-900/40 text-green-300 border border-green-800 text-xs px-3 py-1 rounded-full font-medium">Sensör Ağı</span>
+                    </div>
+                </div>
+
+                <!-- Proje 3 -->
+                <div class="project-card bg-card border border-gray-700 rounded-2xl p-8 transition-all duration-300 flex flex-col h-full">
+                    <div class="bg-gray-800 w-12 h-12 rounded-lg flex items-center justify-center mb-6 border border-gray-700">
+                        <i class="fa-solid fa-user-secret text-red-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Siber Güvenlik Dedektiflik Oyunu</h3>
+                    <p class="text-gray-400 mb-6 flex-grow text-sm leading-relaxed">Hikaye anlatımı ile siber güvenlik bulmacalarını birleştiren, Docker sanal makineleri üzerinden CTF mekaniklerini kullanan çok oyunculu web tabanlı oyun.</p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="bg-red-900/40 text-red-300 border border-red-800 text-xs px-3 py-1 rounded-full font-medium">Siber Güvenlik</span>
+                        <span class="bg-red-900/40 text-red-300 border border-red-800 text-xs px-3 py-1 rounded-full font-medium">CTF</span>
+                        <span class="bg-red-900/40 text-red-300 border border-red-800 text-xs px-3 py-1 rounded-full font-medium">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eğitim ve Sertifikalar Bölümü -->
+    <section id="egitim" class="py-24 bg-[#0b1120]">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-16">
+            <!-- Eğitim -->
+            <div>
+                <div class="flex items-center mb-10">
+                    <i class="fa-solid fa-graduation-cap text-2xl text-primary mr-4"></i>
+                    <h2 class="text-3xl font-bold text-white">Eğitim Geçmişi</h2>
+                </div>
+                <div class="relative border-l border-gray-700 pl-8 ml-3 space-y-10">
+                    <div class="relative">
+                        <div class="absolute w-4 h-4 bg-primary rounded-full -left-[39.5px] top-1.5 ring-4 ring-[#0b1120]"></div>
+                        <h4 class="text-xl font-bold text-white">Bilgisayar Mühendisliği</h4>
+                        <p class="text-primary font-medium mt-1">Zonguldak Bülent Ecevit Üniversitesi</p>
+                        <p class="text-gray-500 text-sm mt-2 flex items-center"><i class="fa-regular fa-calendar mr-2"></i>2023 - Devam Ediyor</p>
+                        <p class="text-gray-400 text-sm mt-2">Gano: <span class="text-white font-medium">3.19</span></p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute w-4 h-4 bg-gray-600 rounded-full -left-[39.5px] top-1.5 ring-4 ring-[#0b1120]"></div>
+                        <h4 class="text-xl font-bold text-gray-300">Fizik</h4>
+                        <p class="text-gray-400 font-medium mt-1">Süleyman Demirel Üniversitesi</p>
+                        <p class="text-gray-500 text-sm mt-2 flex items-center"><i class="fa-regular fa-calendar mr-2"></i>2021 - 2023</p>
+                        <p class="text-gray-400 text-sm mt-2">Gano: <span class="text-white font-medium">3.23</span></p>
                     </div>
                 </div>
             </div>
 
+            <!-- Sertifikalar -->
             <div>
-                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 inline-block pb-2">Sertifikalar</h2>
+                <div class="flex items-center mb-10">
+                    <i class="fa-solid fa-award text-2xl text-accent mr-4"></i>
+                    <h2 class="text-3xl font-bold text-white">Sertifikalar & Atölyeler</h2>
+                </div>
                 <ul class="space-y-4">
-                    <li class="bg-white p-4 rounded shadow flex items-center">
-                        <i class="fa-solid fa-certificate text-blue-500 text-2xl mr-4"></i>
+                    <li class="bg-card border border-gray-800 p-5 rounded-xl flex items-start hover:border-gray-600 transition-colors">
+                        <div class="bg-gray-800/50 p-3 rounded-lg mr-4 border border-gray-700">
+                            <i class="fa-solid fa-code text-primary"></i>
+                        </div>
                         <div>
-                            <h4 class="font-bold text-gray-800">C# A'dan Z'ye Eğitimi (Murat Yücedağ)</h4>
-                            <p class="text-gray-500 text-sm">Udemy</p>
+                            <h4 class="font-bold text-gray-200">C# A'dan Z'ye Eğitimi</h4>
+                            <p class="text-gray-400 text-sm mt-1">Udemy (Murat Yücedağ)</p>
                         </div>
                     </li>
-                    <li class="bg-white p-4 rounded shadow flex items-center">
-                        <i class="fa-solid fa-certificate text-blue-500 text-2xl mr-4"></i>
+                    <li class="bg-card border border-gray-800 p-5 rounded-xl flex items-start hover:border-gray-600 transition-colors">
+                        <div class="bg-gray-800/50 p-3 rounded-lg mr-4 border border-gray-700">
+                            <i class="fa-solid fa-microchip text-accent"></i>
+                        </div>
                         <div>
-                            <h4 class="font-bold text-gray-800">Yapay Zeka Atölyesi (Antalya)</h4>
-                            <p class="text-gray-500 text-sm">BTK Akademi</p>
+                            <h4 class="font-bold text-gray-200">Yapay Zeka Atölyesi (Antalya)</h4>
+                            <p class="text-gray-400 text-sm mt-1">BTK Akademi</p>
                         </div>
                     </li>
-                    <li class="bg-white p-4 rounded shadow flex items-center">
-                        <i class="fa-solid fa-certificate text-blue-500 text-2xl mr-4"></i>
+                    <li class="bg-card border border-gray-800 p-5 rounded-xl flex items-start hover:border-gray-600 transition-colors">
+                        <div class="bg-gray-800/50 p-3 rounded-lg mr-4 border border-gray-700">
+                            <i class="fa-brands fa-python text-yellow-500"></i>
+                        </div>
                         <div>
-                            <h4 class="font-bold text-gray-800">Makine Öğrenmesi & Python Eğitimi</h4>
-                            <p class="text-gray-500 text-sm">BTK Akademi</p>
+                            <h4 class="font-bold text-gray-200">Makine Öğrenmesi & Python Eğitimi</h4>
+                            <p class="text-gray-400 text-sm mt-1">BTK Akademi</p>
                         </div>
                     </li>
                 </ul>
@@ -169,9 +275,16 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 text-center">
-        <p class="mb-4">Antalya, Türkiye | <a href="mailto:omerf.sahan7@gmail.com" class="text-blue-400 hover:underline">omerf.sahan7@gmail.com</a></p>
-        <p class="text-gray-400 text-sm">&copy; 2026 Ömer Faruk Şahan. Tüm hakları saklıdır.</p>
+    <footer class="bg-dark border-t border-gray-800 py-10 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" class="text-gray-500 hover:text-white transition-colors text-2xl"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="text-gray-500 hover:text-blue-500 transition-colors text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:omerf.sahan7@gmail.com" class="text-gray-500 hover:text-primary transition-colors text-2xl"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <p class="text-gray-400 mb-2">Antalya, Türkiye</p>
+            <p class="text-gray-600 text-sm">&copy; 2026 Ömer Faruk Şahan. Tüm hakları saklıdır.</p>
+        </div>
     </footer>
 
 </body>
